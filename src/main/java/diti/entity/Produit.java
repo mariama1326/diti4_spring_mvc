@@ -1,6 +1,5 @@
 package diti.entity;
 
-
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +14,10 @@ public class Produit {
 
     private double prix;
 
+    @ManyToOne
+    @JoinColumn(name = "type_produit_id")
+    private TypeProduit typeProduit;
+
     public Produit() {
     }
 
@@ -24,28 +27,14 @@ public class Produit {
         this.prix = prix;
     }
 
-    public Long getId() {
-        return id;
+    // ... tous tes getters/setters existants (id, libelle, prix) ...
+
+    public TypeProduit getTypeProduit() {
+        return typeProduit;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getLibelle() {
-        return libelle;
-    }
-
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
-    }
-
-    public double getPrix() {
-        return prix;
-    }
-
-    public void setPrix(double prix) {
-        this.prix = prix;
+    public void setTypeProduit(TypeProduit typeProduit) {
+        this.typeProduit = typeProduit;
     }
 
     @Override
